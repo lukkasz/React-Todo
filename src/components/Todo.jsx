@@ -9,7 +9,7 @@ export default class Todo extends Component {
     const {id, text} = this.props;
     return (
       <div>
-        {id}. {text}
+        {text}
       </div>  
     )
   }

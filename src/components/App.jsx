@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
+import uuid from 'node-uuid';
 
 export default class App extends Component {
   constructor() {
@@ -12,15 +13,15 @@ export default class App extends Component {
       searchText: '',
       todos: [
         {
-          id: 1,
+          id: uuid(),
           text: 'Walk the dog'
         },
         {
-          id: 2,
+          id: uuid(),
           text: 'Clean house'
         },
         {
-          id: 3,
+          id: uuid(),
           text: 'Take the trash'
         }
       ]
@@ -31,7 +32,15 @@ export default class App extends Component {
   }
   
   handleAddTodo(text) {
-    console.log('New Todo: ' + text );
+    this.setState({
+      todos: [
+        ...this.state.todos, 
+        {
+          id: uuid(),
+          text: text
+        }
+      ]
+    })
   }
   
   handleSearch(showCompleted, searchText) {
