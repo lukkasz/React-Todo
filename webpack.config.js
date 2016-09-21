@@ -33,8 +33,11 @@ module.exports = {
   },
   resolve: {
     root: path.resolve(__dirname),
+    modulesDirectories:[
+      'node_modules', 
+      './src/components'
+    ],
     alias: {
-      App: 'src/components/App',
       applicationStyles: 'src/style/style.scss'
     },
     extensions: ['', '.js', '.jsx']
