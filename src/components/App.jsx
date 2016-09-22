@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import uuid from 'node-uuid';
+
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
-import uuid from 'node-uuid';
+import TodoAPI from 'TodoAPI'
 
 export default class App extends Component {
   constructor() {
@@ -11,28 +13,22 @@ export default class App extends Component {
     this.state =  {
       showCompleted: false,
       searchText: '',
-      todos: [
-        {
-          id: uuid(),
-          text: 'Walk the dog',
-          completed: false
-        },
-        {
-          id: uuid(),
-          text: 'Clean house',
-          completed: true
-        },
-        {
-          id: uuid(),
-          text: 'Take the trash',
-          completed: false
-        }
-      ]
+      todos: []
     };
     
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+  }
+  
+  componentDidMount() {
+    this.setState({
+      todos: TodoAPI.getTodos()
+    })
+  }
+  
+  componentDidUpdate() {
+    TodoAPI.setTodos(this.state.todos);
   }
   
   handleAddTodo(text) {
@@ -69,12 +65,13 @@ export default class App extends Component {
   }
   
   render() {
-    const {todos} = this.state;
+    const {todos, showCompleted, searchText} = this.state;
+    const filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch} />
-        <TodoList todos={todos} onToggle = {this.handleToggle}/>
+        <TodoList todos={filterTodos} onToggle = {this.handleToggle}/>
         <AddTodo onAddTodo = {this.handleAddTodo} />
       </div>
     );

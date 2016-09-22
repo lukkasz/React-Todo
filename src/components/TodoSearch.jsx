@@ -21,7 +21,7 @@ export default class TodoSearch extends Component {
         </div>
         <div className="checkbox">
           <label>
-            <input type="checkbox" ref="showCompleted" onChange={this.handleSearch} /> text 
+            <input type="checkbox" ref="showCompleted" onChange={this.handleSearch} /> Show completed todos
           </label>
         </div>
       </div>  
