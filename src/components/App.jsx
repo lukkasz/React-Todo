@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'node-uuid';
+import moment from 'moment';
 
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
@@ -32,13 +33,16 @@ export default class App extends Component {
   }
   
   handleAddTodo(text) {
+    console.log(moment().unix());
     this.setState({
       todos: [
         ...this.state.todos, 
         {
           id: uuid(),
           text: text,
-          completed: false
+          completed: false,
+          createdAt: moment().unix(),
+          completedAt: undefined
         }
       ]
     })
@@ -55,6 +59,7 @@ export default class App extends Component {
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
       }
       return todo;
     });
@@ -69,7 +74,8 @@ export default class App extends Component {
     const filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     
     return (
-      <div>
+      <div className="col-md-6 col-md-offset-3">
+        <h1 className="text-center">Todo App</h1>
         <TodoSearch onSearch={this.handleSearch} />
         <TodoList todos={filterTodos} onToggle = {this.handleToggle}/>
         <AddTodo onAddTodo = {this.handleAddTodo} />

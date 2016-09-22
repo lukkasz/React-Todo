@@ -19,9 +19,10 @@ export default class TodoSearch extends Component {
         <div>
           <input className="form-control" type="search" ref="searchText" placeholder="Search Todos" onChange={this.handleSearch}/>
         </div>
-        <div className="checkbox">
+        <div className="checkbox text-center">
           <label>
-            <input type="checkbox" ref="showCompleted" onChange={this.handleSearch} /> Show completed todos
+            <input type="checkbox" ref="showCompleted" onChange={this.handleSearch} /> 
+            <span className="small text-primary">Show completed todos</span>
           </label>
         </div>
       </div>  
