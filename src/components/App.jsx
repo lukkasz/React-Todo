@@ -74,11 +74,17 @@ export default class App extends Component {
     const filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     
     return (
-      <div className="col-md-6 col-md-offset-3">
-        <h1 className="text-center">Todo App</h1>
-        <TodoSearch onSearch={this.handleSearch} />
-        <TodoList todos={filterTodos} onToggle = {this.handleToggle}/>
-        <AddTodo onAddTodo = {this.handleAddTodo} />
+      <div>
+        <h1 className="page-title">Todo App</h1>
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
+            <div className="todo-container">
+              <TodoSearch onSearch={this.handleSearch} />
+              <TodoList todos={filterTodos} onToggle = {this.handleToggle}/>
+              <AddTodo onAddTodo = {this.handleAddTodo} />  
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

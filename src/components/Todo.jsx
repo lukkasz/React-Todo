@@ -12,6 +12,7 @@ export default class Todo extends Component {
   }
   render() {
     const {text, completed, createdAt, completedAt} = this.props;
+    const todoClassName = completed ? 'todo todo--completed' : 'todo';
     const renderDate = () => {
       let message = 'Created '
       let timeStamp = createdAt;
@@ -24,10 +25,14 @@ export default class Todo extends Component {
       return message + moment.unix(timeStamp).format('MMM DD, YY @ HH:mm');
     }
     return (
-      <div onClick={this.handleClick}>
-        <input type="checkbox" checked={completed} readOnly />
-         <span> {text} </span>
-        <p> {renderDate()} </p>
+      <div className={todoClassName} onClick={this.handleClick}>
+        <div className="todo__checkbox">
+           <input type="checkbox" checked={completed} readOnly />
+        </div>
+        <div>
+          <p>{text}</p>
+          <p className="todo__subtext">{renderDate()}</p>
+        </div>
       </div>  
     )
   }

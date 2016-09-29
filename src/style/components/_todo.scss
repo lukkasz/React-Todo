@@ -1,0 +1,31 @@
+.todo {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  padding: 1rem;
+  transition: background .3s ease;
+  
+  p {
+    margin: 0;
+  }
+  
+  &:hover {
+    background: #f0f0f0;
+  }
+  
+  &__subtext {
+    color: #999;
+  }
+  
+  &__checkbox {
+    margin-right: 1rem; 
+  }
+  
+  &--completed {
+    p, .todo__subtext {
+      color: $light-color;
+      text-decoration: line-through;
+    }
+  }
+  
+}

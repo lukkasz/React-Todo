@@ -15,14 +15,14 @@ export default class TodoSearch extends Component {
   
   render() {
     return(
-      <div>
+      <div className="todo-container__header">
         <div>
           <input className="form-control" type="search" ref="searchText" placeholder="Search Todos" onChange={this.handleSearch}/>
         </div>
         <div className="checkbox text-center">
           <label>
             <input type="checkbox" ref="showCompleted" onChange={this.handleSearch} /> 
-            <span className="small text-primary">Show completed todos</span>
+            <span className="text-primary">Show completed todos</span>
           </label>
         </div>
       </div>  
