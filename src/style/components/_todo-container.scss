@@ -29,6 +29,10 @@
   &__footer {
     padding: 1rem 1rem 0 1rem;
     border-top: 1px solid $light-grey-border;
+    
+    input, button {
+      margin-bottom: 1rem;
+    }
   }
   
 }

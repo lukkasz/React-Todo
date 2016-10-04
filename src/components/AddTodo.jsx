@@ -28,7 +28,7 @@ export default class AddTodo extends Component {
   
   render() {
     return (
-      <div className="todo-cotainer__footer">
+      <div className="todo-container__footer">
         <form onSubmit={this.onFromSubmit}>
           <div>
             <input className="form-control" type="text" ref="todoText" placeholder="What do you need to do?" />
